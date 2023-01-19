@@ -16,9 +16,9 @@ TitleLabel.place(relx=0.5, rely=0.1, anchor=CENTER)
 inputLabel = Label(root, text="Enter Text", font="arial 13 bold")
 inputLabel.place(relx=0.02, rely=0.2, anchor=W)
 
-strComboBox = ttk.Combobox(root, values=language, width = 22, state="readonly")
-strComboBox.place(relx=0.13, rely=0.2, anchor=W)
-strComboBox.set("english")
+ComboBox = ttk.Combobox(root, values=language, width = 22, state="readonly")
+ComboBox.place(relx=0.13, rely=0.2, anchor=W)
+ComboBox.set("english")
 
 OutputLabel = Label(root, text="Output", font="arial 13 bold", bg="#f2CCC3")
 OutputLabel.place(relx=0.80, rely=0.2, anchor=E)
@@ -33,11 +33,31 @@ InputText.place(relx = 0.02, rely=0.6,anchor=W)
 OutputText = Text(root, font = "arial 13", height=11, wrap=WORD, padx=5, pady=5, width=26, bg="white")
 OutputText.place(relx = 0.98, rely=0.6,anchor=E)
 
-#def translater():
-    
+def translate():
+    translator = Translator()
+    Val = ComboBox.get()
+    DestVal = DestComboBox.get()
+    print(Val)
+    print(DestVal)
+    s
+    try:
+        print("E")
+        translated = translator.translate(text = InputText.get(1.0, END), src=ComboBox.get(), dest=DestComboBox.get())
+        print("E2")
+        OutputText.delete(1.0, END)
+        print("E3")
+        Outputtext.insert(END, translated.text)
+        print("E4")
+      
+    except:
+      print("Sorry, and error occurd, please try again later.")
+        
 
-Btn = Button(root, text="Translate") #command=translater
-Btn.place(relx = 0.5, rely=0.9, anchor=CENTER)
+Btn = Button(root, text="Translate", command=translate) 
+Btn.place(relx = 0.5, rely=0.85, anchor=CENTER)
+
+FooterLabel = Label(root, text="Created by Emir R. Frias Suzuki", bg="white")
+FooterLabel.place(relx=0.5, rely=0.97, anchor=CENTER)
 
 root.mainloop()
 
